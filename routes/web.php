@@ -2,19 +2,36 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\UserController;
 
-Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/', [HomeController::class, 'index'])->name('welcome');
+Route::get('/how-it-works', [HomeController::class, 'howItWorks'])->name('how-it-works');
+Route::get('/about-us', [HomeController::class, 'about'])->name('about');
+Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [AuthController::class, 'redirectToDashboard'])->name('dashboard');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 });
 
-Route::prefix('pharmacy')->name('pharmacy.')->group(function () {
+Route::prefix('pharmacy')->name('pharmacy.')->middleware(['auth', 'role:pharmacy'])->group(function () {
     Route::get('/dashboard', [PharmacyController::class, 'dashboard'])->name('dashboard');
 });
 
-Route::prefix('user')->name('user.')->group(function () {
+Route::prefix('user')->name('user.')->middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 });

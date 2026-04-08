@@ -3,717 +3,168 @@
 @section('title', 'Admin Dashboard')
 
 @section('content')
-    <div class="custom-container">
-            <!-- row -->
-            <div class="row mb-6 g-6">
-              <div class="col-xl-8 col-lg-6">
-                <div class="bg-gradient-mixed p-8 py-10 rounded-3 p-lg-7">
-                  <!--heading-->
-                  <h1 class="fs-3">👋 Hello Ana,</h1>
-                  <p class="mb-0">Welcome to your E-commerce Dashboard! Monitor your sales,</p>
-                  <p>track your progress, and gain valuable insights.</p>
-                  <a href="#!" class="btn btn-dark">Start AI</a>
-                </div>
-              </div>
-              <div class="col-xl-4 col-lg-6">
-                <!-- card -->
-                <div class="card card-lg">
-                  <!-- card body -->
-                  <div class="card-body">
-                    <div class="mb-4 position-relative py-2">
-                      <div>
-                        <h5 class="mb-1">Ideas for You</h5>
-                      </div>
-                      <!-- swiper navigation-->
-                      <div class="swiper-navigation position-absolute top-50 end-10 me-4 me-lg-8 me-xl-4">
-                        <div class="swiper-button-prev ms-n3"></div>
-                        <div class="swiper-button-next ms-6"></div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <!-- swiper -->
-                        <div class="swiper-container swiper" id="swiper-1" data-pagination-type="" data-speed="900"
-                          data-space-between="100" data-pagination="false" data-navigation="true" data-autoplay="false"
-                          data-autoplay-delay="2000"
-                          data-breakpoints='{"480": {"slidesPerView": 1}, "768": {"slidesPerView": 1}, "1024": {"slidesPerView": 1}, "1200": {"slidesPerView": 1}}'>
-                          <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                              <div>
-                                <h4>Create a Blog Post for your product</h4>
-
-                                <div>
-                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</p>
-                                </div>
-                                <div class="mt-4">
-                                  <a href="#!" class="btn btn-white btn-sm">Read Now</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="swiper-slide">
-                              <div>
-                                <h4>Create a Blog Post for your product</h4>
-
-                                <div>
-                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</p>
-                                </div>
-                                <div class="mt-4">
-                                  <a href="#!" class="btn btn-white btn-sm">Read Now</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="swiper-slide">
-                              <div>
-                                <h4>Create a Blog Post for your product</h4>
-
-                                <div>
-                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</p>
-                                </div>
-                                <div class="mt-4">
-                                  <a href="#!" class="btn btn-white btn-sm">Read Now</a>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Add more slides as needed -->
-                          </div>
-                          <!-- Add Pagination -->
-                          <div class="swiper-pagination"></div>
-                          <!-- Add Navigation -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+  <div class="d-flex flex-column gap-4">
+    <section class="card border-0 shadow-sm overflow-hidden">
+      <div class="card-body p-4 p-lg-5" style="background: linear-gradient(135deg, #083344 0%, #0f766e 45%, #34d399 100%); color: #f8fffe;">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <span class="badge bg-light text-success-emphasis mb-3">Admin Dashboard</span>
+            <h2 class="display-6 mb-3">MedFinder overview for medicine discovery, pharmacy subscriptions, and reservations</h2>
+            <p class="mb-0 text-white-50">Track how many users are searching for medicine, how many pharmacies have joined, which pharmacies are still pending review, and how reservations are moving through the platform.</p>
+          </div>
+          <div class="col-lg-4">
+            <div class="bg-white bg-opacity-10 rounded-4 p-4">
+              <div class="small text-uppercase text-white-50 mb-2">Operations snapshot</div>
+              <div class="fs-2 fw-bold">{{ number_format($stats['reservations']) }}</div>
+              <div class="text-white-50">total medicine reservations logged across MedFinder</div>
             </div>
-            <!-- row -->
-            <div class="row row-cols-1 row-cols-xl-3 row-cols-md-3 mb-6 g-6">
-              <div class="col">
-                <!-- card -->
-                <div class="card card-lg">
-                  <!-- card body -->
-                  <div class="card-body d-flex flex-column gap-8">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="icon-shape icon-lg rounded-circle bg-warning-darker text-warning-lighter">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                          <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                          <path d="M17 17h-11v-14h-2" />
-                          <path d="M6 5l14 1l-1 7h-13" />
-                        </svg>
-                      </div>
-                      <div>Orders</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center lh-1">
-                      <div class="fs-3 fw-bold">5,312</div>
-                      <div class="text-success small">
-                        <span>2.29%</span>
-                        <span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                            class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M3 17l6 -6l4 4l8 -8" />
-                            <path d="M14 7l7 0l0 7" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <!-- card -->
-                <div class="card card-lg">
-                  <!-- card body -->
-                  <div class="card-body d-flex flex-column gap-8">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="icon-shape icon-lg rounded-circle bg-success-darker text-success-lighter">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-tabler icons-tabler-outline icon-tabler-coin">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                          <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
-                          <path d="M12 7v10" />
-                        </svg>
-                      </div>
-                      <div>Revenue</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center lh-1">
-                      <div class="fs-3 fw-bold">$120,000</div>
-                      <div class="text-warning small">
-                        <span>2.19%</span>
-                        <span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                            class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M3 17l6 -6l4 4l8 -8" />
-                            <path d="M14 7l7 0l0 7" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <!-- card -->
-                <div class="card card-lg">
-                  <!-- card body -->
-                  <div class="card-body d-flex flex-column gap-8">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="icon-shape icon-lg rounded-circle bg-info-darker text-info-lighter">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                          <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                          <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
-                        </svg>
-                      </div>
-                      <div>Conversion Rate</div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center lh-1">
-                      <div class="fs-3 fw-bold">3.5%</div>
-                      <div class="text-danger small">
-                        <span>3.19%</span>
-                        <span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                            class="icon icon-tabler icons-tabler-outline icon-tabler-trending-down">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M3 7l6 6l4 -4l8 8" />
-                            <path d="M21 10l0 7l-7 0" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- row -->
-            <div class="row g-6 mb-6">
-              <div class="col-xl-8 col-12">
-                <!-- card -->
-                <div class="card card-lg">
-                  <!--  card body -->
-                  <div class="card-body d-flex flex-column gap-5">
-                    <div class="mb-4">
-                      <!-- heading -->
-                      <h5 class="mb-0">Revenue</h5>
-                    </div>
-                    <div class="bg-gray-100 p-3 rounded-3">
-                      <ul class="nav nav-pills-white nav-fill" id="chartTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link active" id="current-week-tab" data-bs-toggle="pill"
-                            data-bs-target="#current-week" type="button" role="tab" aria-controls="current-week"
-                            aria-selected="true">
-                            <span class="d-flex flex-column">
-                              <span class="d-flex align-items-center gap-2">
-                                <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-primary">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                      d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                  </svg></span><span>Total Income</span>
-                              </span>
-                              <span class="text-start fs-3 fw-semibold mt-2">$120,000</span>
-                            </span>
-                          </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="past-week-tab" data-bs-toggle="pill" data-bs-target="#past-week"
-                            type="button" role="tab" aria-controls="past-week" aria-selected="false">
-                            <span class="d-flex flex-column">
-                              <span class="d-flex align-items-center gap-2">
-                                <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-warning">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                      d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                  </svg></span><span>Total expenses</span>
-                              </span>
-                              <span class="text-start fs-3 fw-semibold mt-2">$198,214</span>
-                            </span>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                    <div class="tab-content" id="chartTabsContent">
-                      <div class="tab-pane fade show active" id="current-week" role="tabpanel"
-                        aria-labelledby="current-week-tab">
-                        <div id="totalIncomeChart"></div>
-                      </div>
-                      <div class="tab-pane fade" id="past-week" role="tabpanel" aria-labelledby="past-week-tab">
-                        <div id="totalExpensesChart"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <section class="row g-4">
+      <div class="col-md-6 col-xl-3">
+        <div class="card card-lg border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary mb-2">Registered users</p><h3 class="mb-1">{{ number_format($stats['users']) }}</h3><small class="text-secondary">People searching for nearby medicine availability</small></div></div>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <div class="card card-lg border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary mb-2">Pharmacies on MedFinder</p><h3 class="mb-1">{{ number_format($stats['pharmacies']) }}</h3><small class="text-secondary">Approved and pending pharmacies in the network</small></div></div>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <div class="card card-lg border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary mb-2">Medicine listings</p><h3 class="mb-1">{{ number_format($stats['medicines']) }}</h3><small class="text-secondary">Types of medicines entered by pharmacies</small></div></div>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <div class="card card-lg border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary mb-2">Reservations made</p><h3 class="mb-1">{{ number_format($stats['reservations']) }}</h3><small class="text-secondary">All medicine reservations created by users</small></div></div>
+      </div>
+    </section>
+
+    <section class="row g-4">
+      <div class="col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h4 class="mb-4">Pharmacy subscription health</h4>
+            <div class="d-flex flex-column gap-3">
+              <div class="p-3 rounded-3 bg-success-subtle">
+                <div class="small text-success-emphasis">Subscribed pharmacies</div>
+                <div class="fs-3 fw-bold text-success-emphasis">{{ number_format($stats['subscribedPharmacies']) }}</div>
               </div>
-              <div class="col-xl-4 col-12">
-                <!-- card -->
-                <div class="card card-lg">
-                  <!-- card body -->
-                  <div class="card-body">
-                    <!-- heading -->
-                    <h5 class="mb-6">Product Sales</h5>
-                    <div id="totalSale" class="d-flex justify-content-center"></div>
-                    <!-- table -->
-                    <table class="table table-sm table-borderless mb-0 mt-5">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-primary">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                </svg>
-                              </span>
-                              <span class="ms-1">Smartphones</span>
-                            </div>
-                          </td>
-                          <td class="d-flex justify-content-end gap-2">
-                            <span> $22,120 </span>
-                            <span class="text-secondary">38.1%</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-warning">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                </svg>
-                              </span>
-                              <span class="ms-1">Laptops</span>
-                            </div>
-                          </td>
-                          <td class="d-flex justify-content-end gap-2">
-                            <span> $4510 </span>
-                            <span class="text-secondary">28.6%</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                </svg>
-                              </span>
-                              <span class="ms-1">Headphones</span>
-                            </div>
-                          </td>
-                          <td class="d-flex justify-content-end gap-2">
-                            <span> $800 </span>
-                            <span class="text-secondary"> 23.8% </span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-danger">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                </svg>
-                              </span>
-                              <span class="ms-1">Cameras</span>
-                            </div>
-                          </td>
-                          <td class="d-flex justify-content-end gap-2">
-                            <span> $420 </span>
-                            <span class="text-secondary"> 9.5% </span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+              <div class="p-3 rounded-3 bg-warning-subtle">
+                <div class="small text-warning-emphasis">Pending pharmacies</div>
+                <div class="fs-3 fw-bold text-warning-emphasis">{{ number_format($stats['pendingPharmacies']) }}</div>
               </div>
-            </div>
-            <!-- row -->
-            <div class="row g-6 mb-6">
-              <div class="col-xl-8">
-                <!-- card -->
-                <div class="card card-lg">
-                  <!-- card header -->
-                  <div class="card-header border-bottom-0">
-                    <div>
-                      <h5 class="mb-0">Orders</h5>
-                    </div>
-                  </div>
-                  <!-- table -->
-                  <div class="table-responsive">
-                    <table class="table text-nowrap mb-0 table-centered table-hover">
-                      <thead>
-                        <tr>
-                          <th>Order ID</th>
-                          <th>Amount</th>
-                          <th>Shipping Method</th>
-                          <th>Delivery Date</th>
-                          <th>Status</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>#DU005</td>
-                          <td>$150</td>
-                          <td>Standard</td>
-                          <td>Jan 20, 2025</td>
-                          <td><span class="badge text-info-emphasis bg-info-subtle">Shipped</span></td>
-                          <td><a href="#!" class="btn btn-white btn-sm">View</a></td>
-                        </tr>
-                        <tr>
-                          <td>#DU004</td>
-                          <td>$200</td>
-                          <td>Express</td>
-                          <td>Jan 22, 2025</td>
-                          <td><span class="badge text-warning-emphasis bg-warning-subtle">Pending</span></td>
-                          <td><a href="#!" class="btn btn-white btn-sm">View</a></td>
-                        </tr>
-                        <tr>
-                          <td>#DU003</td>
-                          <td>$300</td>
-                          <td>Overnight</td>
-                          <td>Jan 18, 2025</td>
-                          <td><span class="badge text-danger-emphasis bg-danger-subtle">Cancel</span></td>
-                          <td><a href="#!" class="btn btn-white btn-sm">View</a></td>
-                        </tr>
-                        <tr>
-                          <td>#DU002</td>
-                          <td>$560</td>
-                          <td>Overnight</td>
-                          <td>Jan 13, 2025</td>
-                          <td><span class="badge text-success-emphasis bg-success-subtle">Completed</span></td>
-                          <td><a href="#!" class="btn btn-white btn-sm">View</a></td>
-                        </tr>
-                        <tr>
-                          <td>#DU002</td>
-                          <td>$560</td>
-                          <td>Overnight</td>
-                          <td>Jan 11, 2025</td>
-                          <td><span class="badge text-success-emphasis bg-success-subtle">Completed</span></td>
-                          <td><a href="#!" class="btn btn-white btn-sm">View</a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+              <div class="p-3 rounded-3 bg-info-subtle">
+                <div class="small text-info-emphasis">Active reservations</div>
+                <div class="fs-3 fw-bold text-info-emphasis">{{ number_format($stats['activeReservations']) }}</div>
               </div>
-              <div class="col-xl-4">
-                <!-- card -->
-                <div class="card card-lg">
-                  <!--  card body -->
-                  <div class="card-body">
-                    <!-- heading -->
-                    <h5 class="mb-6">Revenue by Location</h5>
-                    <div id="map-world" style="width: 100%; height: 250px"></div>
-                    <div class="d-flex flex-column gap-2">
-                      <div>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <span>United States</span>
-                          <span>$22,120</span>
-                        </div>
-                        <div class="progress mt-1" style="height: 6px">
-                          <div class="progress-bar" role="progressbar" aria-label="Example 1px high" style="width: 45%"
-                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                      <div>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <span>India</span>
-                          <span>$12,756</span>
-                        </div>
-                        <div class="progress mt-1" style="height: 6px">
-                          <div class="progress-bar bg-success" role="progressbar" aria-label="Example 1px high"
-                            style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                      <div>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <span>United Kingdom</span>
-                          <span>$8,864</span>
-                        </div>
-                        <div class="progress mt-1" style="height: 6px">
-                          <div class="progress-bar bg-info" role="progressbar" aria-label="Example 1px high"
-                            style="width: 38%" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                      <div>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <span>Sweden</span>
-                          <span>$6,124</span>
-                        </div>
-                        <div class="progress mt-1" style="height: 6px">
-                          <div class="progress-bar bg-warning" role="progressbar" aria-label="Example 1px high"
-                            style="width: 18%" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row g-6 mb-6">
-              <div class="col-xl-4">
-                <!-- card -->
-                <div class="card card-lg">
-                  <!-- card body -->
-                  <div class="card-body">
-                    <!-- heading -->
-                    <div class="mb-5">
-                      <h5>Sales by gender</h5>
-                    </div>
-                    <div id="salesBygender"></div>
-                  </div>
-                  <div class="border-top border-dashed px-6 py-4">
-                    <div class="d-flex align-items-center justify-content-center gap-6">
-                      <div class="d-flex align-items-center gap-1">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                            fill="currentColor"
-                            class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-primary">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                          </svg></span><span class="lh-1">Mens</span>
-                      </div>
-                      <div class="d-flex align-items-center gap-1">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                            fill="currentColor"
-                            class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-warning">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                          </svg></span><span class="lh-1">Womens</span>
-                      </div>
-                      <div class="d-flex align-items-center gap-1">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                            fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-danger">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                          </svg></span><span class="lh-1">Kids</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-8">
-                <!-- card -->
-                <div class="card card-lg">
-                  <div class="card-header border-bottom-0">
-                    <!-- heading -->
-                    <div>
-                      <h5 class="mb-0">Top Selling Products</h5>
-                    </div>
-                  </div>
-                  <!-- table -->
-                  <div class="table-responsive">
-                    <table class="table text-nowrap mb-0 table-centered table-hover">
-                      <thead>
-                        <tr>
-                          <th>Product</th>
-                          <th>Sale</th>
-                          <th>Revenue</th>
-                          <th>Rating</th>
-                          <th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <div>
-                              <a href="#!" class="d-flex align-items-center gap-2 text-inherit">
-                                <img src="{{ asset('assets/images/ecommerce/product-1.jpg') }}" alt="product" class="rounded" width="40" />
-                                <span class="text-truncate">Transparent Sunglasses</span>
-                              </a>
-                            </div>
-                          </td>
-                          <td>454</td>
-                          <td>$50,000</td>
-                          <td>
-                            <div class="d-flex align-items-center gap-2">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-star text-warning">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
-                                </svg>
-                              </span>
-                              <span>5/5</span>
-                            </div>
-                          </td>
-                          <td><span class="badge text-info-emphasis bg-info-subtle">In Stock</span></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div>
-                              <a href="#!" class="d-flex align-items-center gap-2 text-inherit">
-                                <img src="{{ asset('assets/images/ecommerce/product-2.jpg') }}" alt="product" class="rounded" width="40" />
-                                <span class="text-truncate">Frames Still Life Glasses</span>
-                              </a>
-                            </div>
-                          </td>
-                          <td>454</td>
-                          <td>$50,000</td>
-                          <td>
-                            <div class="d-flex align-items-center gap-2">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-star text-warning">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
-                                </svg>
-                              </span>
-                              <span>5/5</span>
-                            </div>
-                          </td>
-                          <td><span class="badge text-info-emphasis bg-info-subtle">In Stock</span></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div>
-                              <a href="#!" class="d-flex align-items-center gap-2 text-inherit">
-                                <img src="{{ asset('assets/images/ecommerce/product-3.jpg') }}" alt="product" class="rounded" width="40" />
-                                <span>Slightly Rounded Frame</span>
-                              </a>
-                            </div>
-                          </td>
-                          <td>124</td>
-                          <td>$30,000</td>
-                          <td>
-                            <div class="d-flex align-items-center gap-2">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-star-half text-warning">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M12 1a.993 .993 0 0 1 .823 .443l.067 .116l2.852 5.781l6.38 .925c.741 .108 1.08 .94 .703 1.526l-.07 .095l-.078 .086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1 -1.249 1.135l-.101 -.035l-.101 -.046l-5.693 -3l-5.706 3c-.105 .055 -.212 .09 -.32 .106l-.106 .01a1.003 1.003 0 0 1 -1.038 -1.06l.013 -.11l1.09 -6.355l-4.623 -4.5a1.001 1.001 0 0 1 .328 -1.647l.113 -.036l.114 -.023l6.379 -.925l2.853 -5.78a.968 .968 0 0 1 .904 -.56zm0 3.274v12.476a1 1 0 0 1 .239 .029l.115 .036l.112 .05l4.363 2.299l-.836 -4.873a1 1 0 0 1 .136 -.696l.07 -.099l.082 -.09l3.546 -3.453l-4.891 -.708a1 1 0 0 1 -.62 -.344l-.073 -.097l-.06 -.106l-2.183 -4.424z" />
-                                </svg>
-                              </span>
-                              <span>4.0/5</span>
-                            </div>
-                          </td>
-                          <td><span class="badge text-warning-emphasis bg-warning-subtle">Low Stock</span></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div>
-                              <a href="#!" class="d-flex align-items-center gap-2 text-inherit">
-                                <img src="{{ asset('assets/images/ecommerce/product-4.jpg') }}" alt="product" class="rounded" width="40" />
-                                <span>Colored-Transparent Sunglasses</span>
-                              </a>
-                            </div>
-                          </td>
-                          <td>124</td>
-                          <td>$30,000</td>
-                          <td>
-                            <div class="d-flex align-items-center gap-2">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-star-half text-warning">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M12 1a.993 .993 0 0 1 .823 .443l.067 .116l2.852 5.781l6.38 .925c.741 .108 1.08 .94 .703 1.526l-.07 .095l-.078 .086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1 -1.249 1.135l-.101 -.035l-.101 -.046l-5.693 -3l-5.706 3c-.105 .055 -.212 .09 -.32 .106l-.106 .01a1.003 1.003 0 0 1 -1.038 -1.06l.013 -.11l1.09 -6.355l-4.623 -4.5a1.001 1.001 0 0 1 .328 -1.647l.113 -.036l.114 -.023l6.379 -.925l2.853 -5.78a.968 .968 0 0 1 .904 -.56zm0 3.274v12.476a1 1 0 0 1 .239 .029l.115 .036l.112 .05l4.363 2.299l-.836 -4.873a1 1 0 0 1 .136 -.696l.07 -.099l.082 -.09l3.546 -3.453l-4.891 -.708a1 1 0 0 1 -.62 -.344l-.073 -.097l-.06 -.106l-2.183 -4.424z" />
-                                </svg>
-                              </span>
-                              <span>4.0/5</span>
-                            </div>
-                          </td>
-                          <td><span class="badge text-warning-emphasis bg-warning-subtle">Low Stock</span></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div>
-                              <a href="#!" class="d-flex align-items-center gap-2 text-inherit">
-                                <img src="{{ asset('assets/images/ecommerce/product-5.jpg') }}" alt="product" class="rounded" width="40" />
-                                <span>Sun Glasses Table</span>
-                              </a>
-                            </div>
-                          </td>
-                          <td>124</td>
-                          <td>$30,000</td>
-                          <td>
-                            <div class="d-flex align-items-center gap-2">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-star-half text-warning">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M12 1a.993 .993 0 0 1 .823 .443l.067 .116l2.852 5.781l6.38 .925c.741 .108 1.08 .94 .703 1.526l-.07 .095l-.078 .086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1 -1.249 1.135l-.101 -.035l-.101 -.046l-5.693 -3l-5.706 3c-.105 .055 -.212 .09 -.32 .106l-.106 .01a1.003 1.003 0 0 1 -1.038 -1.06l.013 -.11l1.09 -6.355l-4.623 -4.5a1.001 1.001 0 0 1 .328 -1.647l.113 -.036l.114 -.023l6.379 -.925l2.853 -5.78a.968 .968 0 0 1 .904 -.56zm0 3.274v12.476a1 1 0 0 1 .239 .029l.115 .036l.112 .05l4.363 2.299l-.836 -4.873a1 1 0 0 1 .136 -.696l.07 -.099l.082 -.09l3.546 -3.453l-4.891 -.708a1 1 0 0 1 -.62 -.344l-.073 -.097l-.06 -.106l-2.183 -4.424z" />
-                                </svg>
-                              </span>
-                              <span>4.0/5</span>
-                            </div>
-                          </td>
-                          <td><span class="badge text-warning-emphasis bg-warning-subtle">Low Stock</span></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div>
-                              <a href="#!" class="d-flex align-items-center gap-2 text-inherit">
-                                <img src="{{ asset('assets/images/ecommerce/product-6.jpg') }}" alt="product" class="rounded" width="40" />
-                                <span>Rounded Frames Glasses</span>
-                              </a>
-                            </div>
-                          </td>
-                          <td>124</td>
-                          <td>$30,000</td>
-                          <td>
-                            <div class="d-flex align-items-center gap-2">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                  class="icon icon-tabler icons-tabler-filled icon-tabler-star-half text-warning">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path
-                                    d="M12 1a.993 .993 0 0 1 .823 .443l.067 .116l2.852 5.781l6.38 .925c.741 .108 1.08 .94 .703 1.526l-.07 .095l-.078 .086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1 -1.249 1.135l-.101 -.035l-.101 -.046l-5.693 -3l-5.706 3c-.105 .055 -.212 .09 -.32 .106l-.106 .01a1.003 1.003 0 0 1 -1.038 -1.06l.013 -.11l1.09 -6.355l-4.623 -4.5a1.001 1.001 0 0 1 .328 -1.647l.113 -.036l.114 -.023l6.379 -.925l2.853 -5.78a.968 .968 0 0 1 .904 -.56zm0 3.274v12.476a1 1 0 0 1 .239 .029l.115 .036l.112 .05l4.363 2.299l-.836 -4.873a1 1 0 0 1 .136 -.696l.07 -.099l.082 -.09l3.546 -3.453l-4.891 -.708a1 1 0 0 1 -.62 -.344l-.073 -.097l-.06 -.106l-2.183 -4.424z" />
-                                </svg>
-                              </span>
-                              <span>4.8/5</span>
-                            </div>
-                          </td>
-                          <td><span class="badge text-danger-emphasis bg-danger-subtle">Out of Stock</span></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+              <div class="p-3 rounded-3 bg-primary-subtle">
+                <div class="small text-primary-emphasis">Fulfilled reservations</div>
+                <div class="fs-3 fw-bold text-primary-emphasis">{{ number_format($stats['fulfilledReservations']) }}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="col-xl-8">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div>
+                <h4 class="mb-1">Medicine categories entered by pharmacies</h4>
+                <p class="text-secondary mb-0">A quick view of what patients can currently search for.</p>
+              </div>
+            </div>
+
+            @if ($medicineCategories->isEmpty())
+              <div class="alert alert-light border">No medicine categories yet. Run the MedFinder migrations and seeders to populate this area.</div>
+            @else
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>Category</th>
+                      <th>Total medicines</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($medicineCategories as $category)
+                      <tr>
+                        <td>{{ $category->category }}</td>
+                        <td>{{ number_format($category->total) }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            @endif
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="row g-4">
+      <div class="col-xl-7">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h4 class="mb-4">Recent reservations</h4>
+            @if ($recentReservations->isEmpty())
+              <div class="alert alert-light border mb-0">No reservations yet. Once users start reserving medicine, their requests will appear here.</div>
+            @else
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Medicine</th>
+                      <th>Pharmacy</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($recentReservations as $reservation)
+                      <tr>
+                        <td>{{ $reservation->user?->name ?? 'Unknown user' }}</td>
+                        <td>{{ $reservation->medicine?->name ?? 'Unknown medicine' }}</td>
+                        <td>{{ $reservation->pharmacy?->name ?? 'Unknown pharmacy' }}</td>
+                        <td><span class="badge bg-light text-dark text-capitalize">{{ str_replace('_', ' ', $reservation->status) }}</span></td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            @endif
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-5">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h4 class="mb-4">Latest pharmacies</h4>
+            @if ($pharmacySnapshot->isEmpty())
+              <div class="alert alert-light border mb-0">No pharmacy records yet. Pending and subscribed pharmacies will show here after migration.</div>
+            @else
+              <div class="d-flex flex-column gap-3">
+                @foreach ($pharmacySnapshot as $pharmacy)
+                  <div class="border rounded-4 p-3">
+                    <div class="d-flex justify-content-between align-items-start gap-3">
+                      <div>
+                        <h5 class="mb-1">{{ $pharmacy->name }}</h5>
+                        <p class="text-secondary mb-1">{{ $pharmacy->city }}</p>
+                        <small class="text-secondary">{{ $pharmacy->subscription_plan ?: 'No subscription yet' }}</small>
+                      </div>
+                      <div class="text-end">
+                        <span class="badge {{ $pharmacy->status === 'approved' ? 'bg-success-subtle text-success-emphasis' : 'bg-warning-subtle text-warning-emphasis' }} text-capitalize">{{ $pharmacy->status }}</span>
+                        <div class="small text-secondary mt-2">{{ $pharmacy->is_subscribed ? 'Subscribed' : 'Awaiting activation' }}</div>
+                      </div>
+                    </div>
+                  </div>
+                @endforeach
+              </div>
+            @endif
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 @endsection
