@@ -30,6 +30,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
 
 Route::prefix('pharmacy')->name('pharmacy.')->middleware(['auth', 'role:pharmacy'])->group(function () {
     Route::get('/dashboard', [PharmacyController::class, 'dashboard'])->name('dashboard');
+    Route::post('/medicines', [PharmacyController::class, 'storeMedicine'])->name('medicines.store');
 });
 
 Route::prefix('user')->name('user.')->middleware(['auth', 'role:user'])->group(function () {

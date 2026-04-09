@@ -2,70 +2,109 @@
 <html lang="en">
 <head>
     @include('shared.head-meta')
-    <title>MedFinder | Register</title>
+    <title>MedFinder | Signup</title>
     @include('shared.head-links')
 </head>
 <body class="bg-light">
-    <div class="container py-4 py-lg-5">
-        <div class="row min-vh-100 align-items-center g-4">
-            <div class="col-lg-5 order-2 order-lg-1">
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden" style="background: linear-gradient(135deg, #083344 0%, #0f766e 60%, #ccfbf1 100%);">
-                    <div class="card-body p-4 p-lg-5 text-white">
-                        <span class="badge bg-light text-success-emphasis mb-3">Join MedFinder</span>
-                        <h1 class="display-6 fw-bold mb-3">Create an account for medicine search or pharmacy onboarding</h1>
-                        <p class="mb-0 text-white-50">Users can search for medicine and place reservations. Pharmacies can onboard inventory and grow visibility after subscription.</p>
-                    </div>
-                </div>
+    <div class="d-flex min-vh-100 align-items-center justify-content-center py-4 py-lg-5" style="background: linear-gradient(180deg, #f8fafc 0%, #f0fdfa 48%, #ffffff 100%);">
+        <div class="row w-100 justify-content-center g-4">
+           
+          <div class="col-lg-7 mx-auto">
+      <div class="card auth-card auth-register-card shadow-lg">
+        <div class="card-body p-4 p-lg-5">
+          <div class="auth-form-header">
+            <div>
+              <h2 class="fw-semibold mb-1">Create Account</h2>
+              <p class="text-muted mb-0">Fill in your details below to get started.</p>
             </div>
-            <div class="col-lg-7 order-1 order-lg-2">
-                <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
-                    <div class="card-body p-4 p-lg-5">
-                        <h2 class="mb-1">Create account</h2>
-                        <p class="text-secondary mb-4">Everything is responsive and ready for desktop or mobile use.</p>
-
-                        @if ($errors->any())
-                            <div class="alert alert-danger">{{ $errors->first() }}</div>
-                        @endif
-
-                        <form method="POST" action="{{ route('register.store') }}" class="row g-3">
-                            @csrf
-                            <div class="col-md-6">
-                                <label for="name" class="form-label">Full name</label>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control form-control-lg" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control form-control-lg" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" id="password" name="password" class="form-control form-control-lg" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="password_confirmation" class="form-label">Confirm password</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="role" class="form-label">Account type</label>
-                                <select id="role" name="role" class="form-select form-select-lg" required>
-                                    <option value="user" {{ old('role') === 'user' ? 'selected' : '' }}>Medicine seeker</option>
-                                    <option value="pharmacy" {{ old('role') === 'pharmacy' ? 'selected' : '' }}>Pharmacy account</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-dark btn-lg w-100">Create account</button>
-                            </div>
-                        </form>
-
-                        <div class="text-center mt-4">
-                            <span class="text-secondary">Already have an account?</span>
-                            <a href="{{ route('login') }}" class="fw-semibold text-decoration-none">Sign in</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="small text-muted auth-switch-text">
+              Already registered?
+              <a href="{{ route('login') }}" class="text-decoration-none">Login</a>
             </div>
+          </div>
+
+          @if ($errors->any())
+            <div class="alert alert-danger mt-3 mb-0">{{ $errors->first() }}</div>
+          @endif
+
+          <form method="POST" action="{{ route('register.store') }}" class="form-auth mt-3">
+            @csrf
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="name">Full name</label>
+                <input class="form-control" id="name" name="name" required value="{{ old('name') }}" autocomplete="name" placeholder="Enter your full name">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="email">Email address</label>
+                <input class="form-control" id="email" type="email" name="email" required value="{{ old('email') }}" autocomplete="email" placeholder="name@example.com">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" id="password" type="password" name="password" required autocomplete="new-password" placeholder="Create a secure password">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="password_confirmation">Confirm password</label>
+                <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Re-enter your password">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="roleSelect">Account type</label>
+                <select class="form-select" name="role" id="roleSelect" aria-describedby="roleHelp">
+                  <option value="user" {{ old('role', 'user') === 'user' ? 'selected' : '' }}>Patient</option>
+                  <option value="pharmacy" {{ old('role') === 'pharmacy' ? 'selected' : '' }}>Pharmacy</option>
+                </select>
+                <div id="roleHelp" class="form-text">Pharmacist accounts require admin approval before full access.</div>
+              </div>
+            </div>
+
+            <div id="pharmacyFields" class="pharmacy-fields mt-4 {{ old('role') === 'pharmacy' ? '' : 'd-none' }}">
+              <div class="pharmacy-fields-header">
+                <h3>Pharmacy details</h3>
+                <p>Provide these details if you are registering as a pharmacy.</p>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="pharmacy_name">Pharmacy name</label>
+                  <input class="form-control" id="pharmacy_name" name="pharmacy_name" value="{{ old('pharmacy_name') }}" placeholder="Enter pharmacy name">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="city">License no</label>
+                  <input class="form-control" id="city" name="city" value="{{ old('city') }}" placeholder="Enter license number">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="address">Address</label>
+                  <input class="form-control" id="address" name="address" value="{{ old('address') }}" placeholder="Enter street or branch address">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="phone">Phone number</label>
+                  <input class="form-control" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Enter phone number">
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary w-100 mt-4 auth-submit-btn" type="submit">Create account</button>
+          </form>
         </div>
+      </div>
     </div>
     @include('shared.scripts')
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const roleSelect = document.getElementById('roleSelect');
+        const pharmacyFields = document.getElementById('pharmacyFields');
+
+        if (!roleSelect || !pharmacyFields) {
+          return;
+        }
+
+        const togglePharmacyFields = () => {
+          pharmacyFields.classList.toggle('d-none', roleSelect.value !== 'pharmacy');
+        };
+
+        roleSelect.addEventListener('change', togglePharmacyFields);
+        togglePharmacyFields();
+      });
+    </script>
 </body>
 </html>

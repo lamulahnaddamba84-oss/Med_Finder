@@ -18,6 +18,7 @@ class Medicine extends Model
         'form',
         'strength',
         'price',
+        'cost',
         'stock',
         'status',
     ];
@@ -26,6 +27,7 @@ class Medicine extends Model
     {
         return [
             'price' => 'decimal:2',
+            'cost' => 'decimal:2',
         ];
     }
 
