@@ -6,7 +6,7 @@
     <section class="row align-items-center g-4 g-xl-5 mb-5 pb-lg-4">
         <div class="col-xl-6">
             <div class="pe-xl-4">
-                <div class="section-kicker mb-3">Modern Medicine Discovery</div>
+                <div class="section-kicker mb-3">Discover Medicine nearby</div>
                 <h1 class="display-3 fw-bold mb-3" style="color: #020617;">Find medicine in nearby pharmacies and reserve it in minutes</h1>
                 <p class="fs-5 mb-4" style="color: #334155;">MedFinder helps people search for medicines, compare nearby pharmacy availability, and reserve stock before leaving home. Pharmacies get a professional platform to publish inventory and manage reservation demand.</p>
 
@@ -25,9 +25,7 @@
                         <div class="col-sm-6 col-lg-2">
                             <button type="submit" class="btn btn-medfinder w-100 py-3">Search</button>
                         </div>
-                        <div class="col-sm-6 col-lg-2">
-                            <a href="{{ route('welcome') }}" class="btn btn-outline-medfinder w-100 py-3">Reset</a>
-                        </div>
+                            <!-- Reset button removed as requested -->
                     </div>
                 </form>
 
