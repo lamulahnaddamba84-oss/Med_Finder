@@ -23,7 +23,15 @@
             </div>
           </div>
 
+<<<<<<< HEAD
           <form method="post" action="{{ route('register') }}" class="form-auth">
+=======
+          @if ($errors->any())
+            <div class="alert alert-danger mt-3 mb-0">{{ $errors->first() }}</div>
+          @endif
+
+          <form method="POST" action="{{ route('register.store') }}" class="form-auth mt-3">
+>>>>>>> 67139b3fde1f2d87aeb91f0936104bf524c5d2c7
             @csrf
 
             <div class="row g-3">
@@ -40,19 +48,37 @@
                 <input class="form-control" id="password" type="password" name="password" required autocomplete="new-password" placeholder="Create a secure password">
               </div>
               <div class="col-md-6">
+<<<<<<< HEAD
                 <label class="form-label" for="roleSelect">Account type</label>
                 <select class="form-select" name="role" id="roleSelect" aria-describedby="roleHelp">
                   <option value="patient" {{ old('role', 'patient') === 'patient' ? 'selected' : '' }}>Patient</option>
                   <option value="pharmacist" {{ old('role') === 'pharmacist' ? 'selected' : '' }}>Pharmacist</option>
+=======
+                <label class="form-label" for="password_confirmation">Confirm password</label>
+                <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Re-enter your password">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="roleSelect">Account type</label>
+                <select class="form-select" name="role" id="roleSelect" aria-describedby="roleHelp">
+                  <option value="user" {{ old('role', 'user') === 'user' ? 'selected' : '' }}>Patient</option>
+                  <option value="pharmacy" {{ old('role') === 'pharmacy' ? 'selected' : '' }}>Pharmacy</option>
+>>>>>>> 67139b3fde1f2d87aeb91f0936104bf524c5d2c7
                 </select>
                 <div id="roleHelp" class="form-text">Pharmacist accounts require admin approval before full access.</div>
               </div>
             </div>
 
+<<<<<<< HEAD
             <div id="pharmacyFields" class="pharmacy-fields mt-4 {{ old('role') === 'pharmacist' ? '' : 'd-none' }}">
               <div class="pharmacy-fields-header">
                 <h3>Pharmacy details</h3>
                 <p>Provide these details if you are registering as a pharmacist.</p>
+=======
+            <div id="pharmacyFields" class="pharmacy-fields mt-4 {{ old('role') === 'pharmacy' ? '' : 'd-none' }}">
+              <div class="pharmacy-fields-header">
+                <h3>Pharmacy details</h3>
+                <p>Provide these details if you are registering as a pharmacy.</p>
+>>>>>>> 67139b3fde1f2d87aeb91f0936104bf524c5d2c7
               </div>
 
               <div class="row g-3">
@@ -61,12 +87,21 @@
                   <input class="form-control" id="pharmacy_name" name="pharmacy_name" value="{{ old('pharmacy_name') }}" placeholder="Enter pharmacy name">
                 </div>
                 <div class="col-md-6">
+<<<<<<< HEAD
                   <label class="form-label" for="license">License number</label>
                   <input class="form-control" id="license" name="license" value="{{ old('license') }}" placeholder="Enter license number">
                 </div>
                 <div class="col-md-6">
                   <label class="form-label" for="location">Location</label>
                   <input class="form-control" id="location" name="location" value="{{ old('location') }}" placeholder="City or branch location">
+=======
+                  <label class="form-label" for="city">License no</label>
+                  <input class="form-control" id="city" name="city" value="{{ old('city') }}" placeholder="Enter license number">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="address">Address</label>
+                  <input class="form-control" id="address" name="address" value="{{ old('address') }}" placeholder="Enter street or branch address">
+>>>>>>> 67139b3fde1f2d87aeb91f0936104bf524c5d2c7
                 </div>
                 <div class="col-md-6">
                   <label class="form-label" for="phone">Phone number</label>
@@ -81,5 +116,22 @@
       </div>
     </div>
     @include('shared.scripts')
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const roleSelect = document.getElementById('roleSelect');
+        const pharmacyFields = document.getElementById('pharmacyFields');
+
+        if (!roleSelect || !pharmacyFields) {
+          return;
+        }
+
+        const togglePharmacyFields = () => {
+          pharmacyFields.classList.toggle('d-none', roleSelect.value !== 'pharmacy');
+        };
+
+        roleSelect.addEventListener('change', togglePharmacyFields);
+        togglePharmacyFields();
+      });
+    </script>
 </body>
 </html>

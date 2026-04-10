@@ -4,6 +4,14 @@
 
 @section('content')
   <div class="d-flex flex-column gap-4">
+    @if (session('status'))
+      <div class="alert alert-success mb-0">{{ session('status') }}</div>
+    @endif
+
+    @if ($errors->any())
+      <div class="alert alert-danger mb-0">{{ $errors->first() }}</div>
+    @endif
+
     <section class="card border-0 shadow-sm overflow-hidden">
       <div class="card-body p-4 p-lg-5" style="background: linear-gradient(135deg, #1f2937 0%, #0f766e 55%, #99f6e4 100%); color: #f8fffe;">
         <div class="row g-4 align-items-center">
@@ -20,6 +28,47 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="card border-0 shadow-sm">
+      <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-start mb-4">
+          <div>
+            <h4 class="mb-1">Add Medicine</h4>
+            <p class="text-secondary mb-0">Create a medicine listing with pricing and stock details.</p>
+          </div>
+        </div>
+
+        <form method="POST" action="{{ route('pharmacy.medicines.store') }}" class="row g-3">
+          @csrf
+          <div class="col-md-6">
+            <label class="form-label" for="medicine_name">Medicine name</label>
+            <input type="text" class="form-control" id="medicine_name" name="name" value="{{ old('name') }}" required>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label" for="medicine_price">Price</label>
+            <input type="number" class="form-control" id="medicine_price" name="price" value="{{ old('price') }}" min="0" step="0.01" required>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label" for="medicine_quantity">Quantity</label>
+            <input type="number" class="form-control" id="medicine_quantity" name="quantity" value="{{ old('quantity', 0) }}" min="0" step="1" required>
+          </div>
+          <div class="col-md-8">
+            <label class="form-label" for="medicine_category">Category (optional)</label>
+            <input type="text" class="form-control" id="medicine_category" name="category" value="{{ old('category') }}" placeholder="e.g. Antibiotic">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="medicine_status">Availability</label>
+            <select class="form-select" id="medicine_status" name="status" required>
+              <option value="available" {{ old('status', 'available') === 'available' ? 'selected' : '' }}>In stock</option>
+              <option value="out_of_stock" {{ old('status') === 'out_of_stock' ? 'selected' : '' }}>Out of stock</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-success">Save Medicine</button>
+          </div>
+        </form>
       </div>
     </section>
 
@@ -46,6 +95,7 @@
                       <th>Category</th>
                       <th>Pharmacy</th>
                       <th>Stock</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -58,6 +108,11 @@
                         <td>{{ $medicine->category }}</td>
                         <td>{{ $medicine->pharmacy?->name ?? 'Unknown pharmacy' }}</td>
                         <td>{{ number_format($medicine->stock) }}</td>
+                        <td>
+                          <span class="badge {{ $medicine->status === 'available' && $medicine->stock > 0 ? 'bg-success-subtle text-success-emphasis' : 'bg-danger-subtle text-danger-emphasis' }}">
+                            {{ $medicine->status === 'available' && $medicine->stock > 0 ? 'In stock' : 'Out of stock' }}
+                          </span>
+                        </td>
                       </tr>
                     @endforeach
                   </tbody>
