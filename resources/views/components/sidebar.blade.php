@@ -1,6 +1,11 @@
+@php
+  $role = auth()->user()?->role;
+  $dashboardRoute = auth()->check() ? route('dashboard') : route('welcome');
+@endphp
+
 <div id="miniSidebar">
   <div class="brand-logo">
-    <a class="d-none d-md-flex align-items-center gap-2" href="{{ auth()->check() ? route('dashboard') : route('welcome') }}">
+    <a class="d-none d-md-flex align-items-center gap-2" href="{{ $dashboardRoute }}">
       <img src="{{ asset('assets/images/brand/logo/logo-icon.svg') }}" alt="MedFinder logo" />
       <span class="fw-bold fs-4 site-logo-text">MedFinder</span>
     </a>
@@ -11,9 +16,13 @@
       <div class="nav-heading">Platform</div>
       <hr class="mx-5 nav-line mb-1" />
     </li>
-    <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}"><span class="text">Admin Overview</span></a></li>
-    <li class="nav-item"><a class="nav-link" href="{{ route('pharmacy.dashboard') }}"><span class="text">Pharmacy Hub</span></a></li>
-    <li class="nav-item"><a class="nav-link" href="{{ route('user.dashboard') }}"><span class="text">User Search</span></a></li>
+    @if ($role === 'admin')
+      <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}"><span class="text">Admin Overview</span></a></li>
+    @elseif ($role === 'pharmacy')
+      <li class="nav-item"><a class="nav-link" href="{{ route('pharmacy.dashboard') }}"><span class="text">Pharmacy Hub</span></a></li>
+    @elseif ($role === 'user')
+      <li class="nav-item"><a class="nav-link" href="{{ route('user.dashboard') }}"><span class="text">Patient Dashboard</span></a></li>
+    @endif
 
     <li class="nav-item mt-4">
       <div class="nav-heading">Session</div>
@@ -33,7 +42,7 @@
 
 <div class="offcanvasNav offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <a class="d-flex align-items-center gap-2" href="{{ auth()->check() ? route('dashboard') : route('welcome') }}">
+    <a class="d-flex align-items-center gap-2" href="{{ $dashboardRoute }}">
       <img src="{{ asset('assets/images/brand/logo/logo-icon.svg') }}" alt="MedFinder logo" />
       <span class="fw-bold fs-4 site-logo-text">MedFinder</span>
     </a>
@@ -41,9 +50,13 @@
   </div>
   <div class="offcanvas-body p-0">
     <ul class="navbar-nav flex-column">
-      <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Overview</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ route('pharmacy.dashboard') }}">Pharmacy Hub</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ route('user.dashboard') }}">User Search</a></li>
+      @if ($role === 'admin')
+        <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Overview</a></li>
+      @elseif ($role === 'pharmacy')
+        <li class="nav-item"><a class="nav-link" href="{{ route('pharmacy.dashboard') }}">Pharmacy Hub</a></li>
+      @elseif ($role === 'user')
+        <li class="nav-item"><a class="nav-link" href="{{ route('user.dashboard') }}">Patient Dashboard</a></li>
+      @endif
       <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}">Public Home</a></li>
     </ul>
   </div>

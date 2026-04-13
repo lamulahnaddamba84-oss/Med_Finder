@@ -20,6 +20,8 @@ class Pharmacy extends Model
         'status',
         'is_subscribed',
         'subscription_plan',
+        'subscription_amount',
+        'subscription_paid_at',
         'subscribed_at',
     ];
 
@@ -27,6 +29,8 @@ class Pharmacy extends Model
     {
         return [
             'is_subscribed' => 'boolean',
+            'subscription_amount' => 'decimal:2',
+            'subscription_paid_at' => 'datetime',
             'subscribed_at' => 'datetime',
         ];
     }

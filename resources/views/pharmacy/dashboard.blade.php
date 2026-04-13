@@ -72,12 +72,6 @@
       </div>
     </section>
 
-    <section class="row g-4">
-      <div class="col-md-6 col-xl-3"><div class="card border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary mb-2">Registered pharmacies</p><h3 class="mb-1">{{ number_format($stats['pharmacies']) }}</h3><small class="text-secondary">Total locations onboarded to MedFinder</small></div></div></div>
-      <div class="col-md-6 col-xl-3"><div class="card border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary mb-2">Subscribed pharmacies</p><h3 class="mb-1">{{ number_format($stats['subscribedPharmacies']) }}</h3><small class="text-secondary">Locations with active subscription plans</small></div></div></div>
-      <div class="col-md-6 col-xl-3"><div class="card border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary mb-2">Pending pharmacies</p><h3 class="mb-1">{{ number_format($stats['pendingPharmacies']) }}</h3><small class="text-secondary">Locations awaiting approval or subscription</small></div></div></div>
-      <div class="col-md-6 col-xl-3"><div class="card border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary mb-2">Medicine entries</p><h3 class="mb-1">{{ number_format($stats['medicines']) }}</h3><small class="text-secondary">All medicines uploaded by partner pharmacies</small></div></div></div>
-    </section>
 
     <section class="row g-4">
       <div class="col-xl-7">
