@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
 class AuthController extends Controller
@@ -33,6 +34,14 @@ class AuthController extends Controller
                 ->onlyInput('email');
         }
 
+        if (Schema::hasColumn('users', 'status') && Auth::user()?->status === 'suspended') {
+            Auth::logout();
+
+            return back()
+                ->withErrors(['email' => 'Your account has been suspended. Please contact the administrator.'])
+                ->onlyInput('email');
+        }
+
         $request->session()->regenerate();
 
         return redirect()->intended(route($this->dashboardRouteFor(Auth::user()?->role)));
@@ -43,34 +52,36 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request): RedirectResponse
+    public function register(Request $request)
     {
-        $data = $request->validate([
+        $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', 'min:8'],
             'role' => ['required', 'in:user,pharmacy'],
             'pharmacy_name' => ['required_if:role,pharmacy', 'nullable', 'string', 'max:255'],
+            'city' => ['nullable', 'string', 'max:255'],
             'license' => ['required_if:role,pharmacy', 'nullable', 'string', 'max:255'],
             'address' => ['required_if:role,pharmacy', 'nullable', 'string', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50'],
         ]);
 
-        $user = DB::transaction(function () use ($data) {
+        $user = DB::transaction(function () use ($validatedData) {
             $user = User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'role' => $data['role'],
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password']),
+                'role' => $validatedData['role'],
+                'status' => 'active',
             ]);
 
-            if ($data['role'] === 'pharmacy') {
+            if ($validatedData['role'] === 'pharmacy') {
                 Pharmacy::create([
                     'user_id' => $user->id,
-                    'name' => $data['pharmacy_name'],
-                    'city' => $data['license'],
-                    'address' => $data['address'],
-                    'phone' => $data['phone'] ?? null,
+                    'name' => $validatedData['pharmacy_name'],
+                    'city' => $validatedData['city'] ?? $validatedData['license'],
+                    'address' => $validatedData['address'],
+                    'phone' => $validatedData['phone'] ?? null,
                     'status' => 'pending',
                 ]);
             }
@@ -83,11 +94,9 @@ class AuthController extends Controller
                 ->route('login')
                 ->with('status', 'Account created successfully. Please log in to continue.');
         }
-
         Auth::login($user);
-        $request->session()->regenerate();
 
-        return redirect()->route($this->dashboardRouteFor($user->role));
+        return redirect()->route('user.dashboard');
     }
 
     public function logout(Request $request): RedirectResponse
@@ -104,12 +113,15 @@ class AuthController extends Controller
         return redirect()->route($this->dashboardRouteFor(Auth::user()?->role));
     }
 
-    private function dashboardRouteFor(?string $role): string
+    private function dashboardRouteFor($role)
     {
-        return match ($role) {
-            'admin' => 'admin.dashboard',
-            'pharmacy' => 'pharmacy.dashboard',
-            default => 'user.dashboard',
-        };
+        switch($role) {
+            case 'admin':
+                return 'admin.dashboard';
+            case 'pharmacy':
+                return 'pharmacy.dashboard';
+            default:
+                return 'user.dashboard';
+        }
     }
 }

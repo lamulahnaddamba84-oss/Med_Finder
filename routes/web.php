@@ -26,6 +26,12 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::post('/pharmacies/{pharmacy}/approve-subscription', [AdminController::class, 'approveSubscription'])
+        ->name('pharmacies.approve-subscription');
+    Route::patch('/pharmacies/{pharmacy}/status', [AdminController::class, 'updatePharmacyStatus'])
+        ->name('pharmacies.update-status');
+    Route::patch('/users/{user}/status', [AdminController::class, 'updateUserStatus'])
+        ->name('users.update-status');
 });
 
 Route::prefix('pharmacy')->name('pharmacy.')->middleware(['auth', 'role:pharmacy'])->group(function () {
@@ -35,4 +41,6 @@ Route::prefix('pharmacy')->name('pharmacy.')->middleware(['auth', 'role:pharmacy
 
 Route::prefix('user')->name('user.')->middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::post('/orders', [UserController::class, 'storeOrder'])->name('orders.store');
+    Route::post('/medicines/{medicine}/reserve', [UserController::class, 'reserve'])->name('medicines.reserve');
 });
